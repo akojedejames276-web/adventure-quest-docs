@@ -4,10 +4,11 @@ Live game: https://adventure-quest-snakladder.netlify.app/
 
 Source: https://github.com/akojedejames276-web/adventure-quest
 
-[Download the complete Netlify source ZIP](https://github.com/akojedejames276-web/adventure-quest/raw/refs/heads/main/releases/adventure-quest-v0.2.0-netlify-source.zip) (requires access to the private source repository).
+[Download the complete Netlify source ZIP](https://github.com/akojedejames276-web/adventure-quest/raw/refs/heads/main/releases/adventure-quest-v0.2.1-netlify-source.zip) (requires access to the private source repository).
 
 - [Approved design](APPROVED_HANDOFF.md)
 - [Current checklist](STATUS.md)
+- [Storage credential fix and verification](V0_2_1_FIX.md)
 - [Version 0.2 tests and live verification](V0_2_VERIFICATION.md)
 - [Earlier hosted core tests](LIVE_VERIFICATION.md)
 - [Architecture](ARCHITECTURE.md)
