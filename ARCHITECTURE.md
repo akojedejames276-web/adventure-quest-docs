@@ -20,6 +20,8 @@ The supplied official local Blobs server implements conditional PUT headers but 
 
 Read strong room + ETag → authenticate hashed player token → settle server timestamps → validate action and expected turn → mutate cloned state → record recent request receipt → conditional write. On conflict, reread and retry up to twelve attempts. If contention persists return 409. Server entropy uses `node:crypto.randomInt` and `randomBytes`; client dice icons never determine outcomes.
 
-Public projection strips token hashes, chat-throttle state, and request receipts. Clients render chat as React text. Player recovery tokens travel in POST bodies; private recovery URL uses a fragment, which is removed on import. Public invitations contain only the room code.
+Public projection strips token hashes, chat-throttle state, private win-reward milestones, and request receipts. Clients render chat as React text. Player recovery tokens travel in POST bodies; private recovery URL uses a fragment, which is removed on import. Public invitations contain only the room code.
 
 No WebSockets, additional database, paid service, client authoritative roll, production memory state, or change to approved game rules has been introduced.
+
+Room championship scores derive from unique saved round results. A private per-player milestone counter credits 50 coins per additional 20 points in the same conditional room transaction. It also backfills earned rewards from old saved histories, once; no client action can claim or set points.
