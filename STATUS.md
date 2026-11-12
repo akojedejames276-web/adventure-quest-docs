@@ -1,49 +1,28 @@
-# Implementation checklist — 12 November 2026
+# Current implementation checklist
 
-## Implemented
+## Implemented and locally verified
 
-- [x] Milestone 1: Netlify API research and architecture; locked `@netlify/blobs` 11.1.9.
-- [x] Milestone 2: typed model, deterministic rule helpers, secure server actions and tests.
-- [x] Milestone 3 implementation: Netlify function, strong Blobs reads, conditional writes, optimistic retries, turn IDs, recent request deduplication.
-- [x] Milestone 4 core UI: responsive readable board, hero selection, tokens, die/button, lobby, Ready, timer, chat/mute/emoji, recovery, QR invitation, results, history, rematch.
-- [x] Board playability verified by graph traversal; all endpoints distinct, no chaining.
-- [x] Local code and documentation Git repositories prepared.
+- [x] Typed authoritative engine and traditional 10×10 board.
+- [x] Strong-consistency conditional Netlify Blobs room persistence and compiled function.
+- [x] 2–8 guest players, secure private sessions, Ready-only start, randomized board/order/dice.
+- [x] Exact finish, overshoot, one connection per landing, no extra turn for six, cosmetic treasure/awards.
+- [x] Timers, disconnect grace/skips, recovery, chat/reactions, invitations/QR, history/rematches.
+- [x] Five-region 3D Floating Kingdom, castle, themed connections and procedural heroes.
+- [x] Cosmetic customization, step/connection animations, cinematic/overview camera, orbit/zoom, local skip.
+- [x] 3D die, victory presentation, synthesized region music/effects and sound controls.
+- [x] Reduced motion, accessible board, WebGL fallback, mobile controls and collapsible panels.
+- [x] Guest device departure, saved adventures, private-link return and network retry handling.
+- [x] 15 automated server checks; desktop/mobile-emulated browser flow and WebGL-disabled fallback.
+- [x] Both requested source/documentation repositories accessible and maintained.
 
-## Tested
+## Release acceptance pending
 
-- [x] Strict TypeScript checks and production frontend/function builds.
-- [x] 500 generated boards: 10 snakes, 10 ladders, legal/distinct endpoints, eight treasures, reachable finish.
-- [x] Three full two-player engine/service rounds: 223 legal turns total, winners, awards, reset and history.
-- [x] Exact finish, overshoot, passing a connection, one transition per roll, treasure, no extra turn on six.
-- [x] Simultaneous rolls and retry requests: one committed move; stale distinct request rejected.
-- [x] Timeout and concurrent polling; 60-second disconnect grace, skip, secure return, No Timer.
-- [x] Host and membership authorization, Ready-only roster, max eight, timer locking, chat validation/rate limit, public token exclusion.
-- [x] Official Blobs emulator: create-if-new conflicts; missing GET ETag safely rejects update.
-- [x] Test-only ETag header shim: stale conditional writes rejected; actual compiled function loaded and exercised by two separate player credentials through create/join/start/roll/poll. This does not establish hosted atomicity.
+- [x] Published version 0.2 verified at the live URL; both guest/recovery and WebGL-disabled browser suites passed against hosted functions. Pre-update room histories restored after deployment.
+- [ ] Owner test on two physical devices, including touch input, visual legibility, frame rate and listening.
+- [ ] Owner visual acceptance of the original procedural art against the detailed approved brief.
+- [ ] Broader long-running storage/history/abuse and load checks beyond the exercised rooms.
+- [x] Verified complete downloadable source ZIP supplied under `releases/`, with SHA-256 and delivery instructions. Static Netlify Drop alone cannot build the function; the existing Git-based Netlify build is the supported deployment path.
 
-## Pending / blocked
+No sign-up/sign-in account system is being added: the owner clarified that guest entry and recovery should be tested. Host privileges remain with the original private host session; automatic host transfer has not been introduced.
 
-- [ ] Human review of playable milestone before heavy 3D polish — explicit handoff gate.
-- [x] Desktop/mobile-emulated Chromium browser core checks passed on the live URL; screenshots inspected. See LIVE_VERIFICATION.md.
-- [x] Remote GitHub repository access confirmed for both requested repositories; existing initial history retained. Source publication is recorded by the repository commits.
-- [x] Owner deployed the project to https://adventure-quest-snakladder.netlify.app/; page and multiplayer endpoint are publicly reachable.
-- [x] Hosted duplicate-roll concurrency, stale roll rejection, independent-session synchronization, timed auto-roll, grace expiry and private recovery passed. Cold-start persistence isolation and physical devices remain unchecked.
-- [ ] Owner test on separate physical devices; public URL and two isolated desktop/mobile-emulated browser sessions have been verified.
-- [ ] Complete 3D Floating Kingdom, varied snake/ladder meshes, hero customization beyond class/color, castle cinematic, camera, skip/shorten, audio controls, accessible animation and rendering performance.
-- [ ] Final deploy archive proven against Netlify deployment workflow. Current ZIP is buildable source plus compiled client/function, not a verified Netlify Drop artifact.
-- [ ] Broader release hardening: room creation/join abuse limits; reconnect network retry UX; host departure/lobby roster management; storage quota/history growth handling; full browser accessibility and mobile performance audit.
-
-## Evidence limits
-
-The three-round suite uses two server-issued player sessions and deterministic injected random entropy against an isolated memory repository. The compiled function suite uses real Request/Response objects and the official SDK's local HTTP emulator, with the disclosed ETag shim. These are not browser sessions, physical devices, hosted storage, or a live public game. Tests are local development evidence only.
-
-## Human checkpoints
-
-1. Repository access checkpoint resolved: both requested private repositories are accessible. No additional GitHub setup is currently requested.
-2. Netlify deployment requires account-side authorization. After repository push, a UI import may be used if the owner agrees; Codex must not silently change the approved deployment approach. No secret values should be pasted into chat.
-3. Once accessible, review the board and multiplayer core. Approve proceeding to 3D polish or give feedback. This is review of implementation, not reopening approved rules.
-4. After deployment, open the public URL on two physical devices and report any synchronization/recovery issue; Codex will also verify available hosted endpoints before claiming completion.
-
-## Live follow-up
-
-See [LIVE_VERIFICATION.md](LIVE_VERIFICATION.md) for the hosted three-round and browser test results. Earlier local-emulator limitations remain documented as historical evidence; hosted tests do not use the emulator shim.
+See `V0_2_VERIFICATION.md` for evidence and limits; `LIVE_VERIFICATION.md` records earlier hosted core checks. A tested implementation does not establish physical-device or artistic acceptance.
