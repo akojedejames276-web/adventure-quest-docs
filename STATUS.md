@@ -24,11 +24,11 @@
 ## Pending / blocked
 
 - [ ] Human review of playable milestone before heavy 3D polish — explicit handoff gate.
-- [ ] Browser desktop/mobile UI verification. Shared desktop capability is enabled but no `cua_repl.js`/browser-control tool is offered in this session; no browser screenshot or interaction result claimed.
+- [x] Desktop/mobile-emulated Chromium browser core checks passed on the live URL; screenshots inspected. See LIVE_VERIFICATION.md.
 - [x] Remote GitHub repository access confirmed for both requested repositories; existing initial history retained. Source publication is recorded by the repository commits.
-- [ ] Netlify account authorization and actual deployment. No connected Netlify deployment tool or account credentials available.
-- [ ] Hosted Blobs conditional-write races, function cold start persistence, real two-device synchronization and recovery.
-- [ ] Public URL verification on separate physical devices; user physical-device check needed.
+- [x] Owner deployed the project to https://adventure-quest-snakladder.netlify.app/; page and multiplayer endpoint are publicly reachable.
+- [x] Hosted duplicate-roll concurrency, stale roll rejection, independent-session synchronization, timed auto-roll, grace expiry and private recovery passed. Cold-start persistence isolation and physical devices remain unchecked.
+- [ ] Owner test on separate physical devices; public URL and two isolated desktop/mobile-emulated browser sessions have been verified.
 - [ ] Complete 3D Floating Kingdom, varied snake/ladder meshes, hero customization beyond class/color, castle cinematic, camera, skip/shorten, audio controls, accessible animation and rendering performance.
 - [ ] Final deploy archive proven against Netlify deployment workflow. Current ZIP is buildable source plus compiled client/function, not a verified Netlify Drop artifact.
 - [ ] Broader release hardening: room creation/join abuse limits; reconnect network retry UX; host departure/lobby roster management; storage quota/history growth handling; full browser accessibility and mobile performance audit.
@@ -43,3 +43,7 @@ The three-round suite uses two server-issued player sessions and deterministic i
 2. Netlify deployment requires account-side authorization. After repository push, a UI import may be used if the owner agrees; Codex must not silently change the approved deployment approach. No secret values should be pasted into chat.
 3. Once accessible, review the board and multiplayer core. Approve proceeding to 3D polish or give feedback. This is review of implementation, not reopening approved rules.
 4. After deployment, open the public URL on two physical devices and report any synchronization/recovery issue; Codex will also verify available hosted endpoints before claiming completion.
+
+## Live follow-up
+
+See [LIVE_VERIFICATION.md](LIVE_VERIFICATION.md) for the hosted three-round and browser test results. Earlier local-emulator limitations remain documented as historical evidence; hosted tests do not use the emulator shim.
